@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-type" content="text/html;charest=UTF-8" />
+<link th:href="@{/style.css}" rel="stylesheet" />
+<title>add Product</title>
+</head>
+<body>
+	<form class="registrationForm" method="post" th:action="@{/registration}" th:object="${user}">
+		<h2 class="header">registration</h2>
+		<input  class="inputData" placeholder="username"  type="text" th:field="*{username}" ></input>
+		<br></br>
+		<input class="inputData" placeholder="Email"  type="text" th:field="*{mail}" ></input>
+		<br></br>
+		<input class="inputData" placeholder="password"  type="text" th:field="*{password}"  ></input>
+		<br></br>
+		<input class="inputData" placeholder="type(buyer-storeowner)"  type="text" th:field="*{type}" ></input>
+		<br></br>
+		<input class="submit" type="submit" name="submit" value="Signup" ></input>
+	</form>
+</body>
+</html>

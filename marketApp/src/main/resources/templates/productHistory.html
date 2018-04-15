@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-type" content="text/html;charest=UTF-8" />
+<link th:href="@{/style.css}" rel="stylesheet" />
+<title>add Product</title>
+</head>
+<body >
+
+<nav>
+  <ul class="primary">
+  	<li>
+      <a href="/productHistory" >product History</a>
+    </li>
+    <li>
+      <a href="/addCollaborator" >Add collaborator</a>
+    </li>
+    <li>
+      <a href="/StoreOwnerProduct" >My Account</a>
+    </li>
+    <li>
+      <a href="/ShowAllProducts2">available Products</a>
+    </li>
+    <li>
+      <a href="Login">Logout</a> 
+    </li>
+      </ul>
+</nav>
+
+
+<table border="1">
+<tr>
+<td>action</td>
+<td>next amount</td>
+<td>previous amount</td>
+<td>product id</td>
+<td>store owner id </td>
+</tr>
+
+<tr th:each="history:${history}">
+			<td th:text="${history.action}"></td>
+			<td th:text="${history.nextAmount}"></td>
+			<td th:text="${history.previousAmount}"></td>
+			<td th:text="${history.productId}"></td>
+			<td th:text="${history.storeOwnerId}"></td>
+			<td>
+   				 <a th:href="@{/productHistory/get/__${history.id}__}">undo</a>
+			</td>
+			
+</tr>
+
+
+</table>
+
+
+
+</body>
+
+</html>

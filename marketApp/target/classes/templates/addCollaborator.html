@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-type" content="text/html;charest=UTF-8" />
+<link th:href="@{/style.css}" rel="stylesheet" />
+<title>add Product</title>
+</head>
+<body>
+<div class="wrap">
+<span class="decor"></span>
+<nav>
+  <ul class="primary">
+  	<li>
+      <a href="/productHistory" >product History</a>
+    </li>
+    <li>
+      <a href="/addCollaborator" >Add collaborator</a>
+    </li>
+    <li>
+      <a href="/StoreOwnerProduct" >My Account</a>
+    </li>
+    <li>
+      <a href="ShowAllProducts2">available Products</a>
+    </li>
+    <li>
+      <a href="Login">Logout</a> 
+    </li>
+      </ul>
+</nav>
+</div>
+<section class="bodyADDproduct">
+		<form class="registrationForm" method="post" th:action="@{/addCollaborator}" th:object="${user}">
+			<h2 class="header">registration</h2>
+			<input  class="inputData" placeholder="username"  type="text" th:field="*{username}" ></input>
+			<br></br>
+			<input class="inputData" placeholder="Email"  type="text" th:field="*{mail}" ></input>
+			<br></br>
+			<input class="inputData" placeholder="password"  type="text" th:field="*{password}"  ></input>
+			<br></br>
+			<br></br>
+			<input class="submit" type="submit" name="submit" value="Signup" ></input>
+		</form>
+		<table class="listProduct">
+		<tr>
+			
+			<td>name</td>
+			<td>Email</td>
+			<td>privileges</td>
+			<td>password</td>
+			
+		</tr>
+		<tr th:each="User:${Users}">
+			<td th:text="${User.username}"></td>
+			<td th:text="${User.mail}"></td>
+			<td th:text="${User.type}"></td>
+			<td th:text="${User.password}"></td>
+		</tr>
+	</table>
+</section>
+	
+
+	
+</body>
+</html>

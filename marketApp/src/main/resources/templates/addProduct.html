@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-type" content="text/html;charest=UTF-8" />
+<link th:href="@{/style.css}" rel="stylesheet" />
+<title>add Product</title>
+</head>
+<body >
+		
+<div class="wrap">
+<span class="decor"></span>
+<nav>
+  <ul class="primary">
+    <li>
+      <a href="/addProduct" >Add Product</a>
+    </li>
+    <li>
+      <a href="/addBrand">Add Brand</a>
+    </li>
+    <li>
+      <a href="/Login">Logout</a> 
+    </li>
+      </ul>
+</nav>
+</div>
+<section class="bodyADDproduct">
+		
+	<form class="adminform" method="post" th:action="@{/addProduct}" th:object="${product}">
+		<h3 class="header">Add New Product</h3>
+		<input class="inputData" placeholder="Name" type="text" th:field="*{name}" ></input>
+		<br></br>
+		<input class="inputData" placeholder="Price" type="text" th:field="*{price}" ></input>
+		<br></br>
+		<input class="inputData" placeholder="Category" type="text" th:field="*{category}"></input>
+		<br></br>
+		<input class="inputData"  placeholder="BrandName" type="text" th:field="*{brandName}"></input>
+		<br></br>
+		<input class="inputData"  placeholder="NumberOfProducts" type="text" th:field="*{NumberOfProducts}"></input>
+		<br></br>
+		<input class="submit" type="submit" name="submit" placeholder="" value="Add"></input>
+	</form>
+	<table class="listProduct">
+		<tr>
+			<td>Product</td>
+			<td>category</td>
+			<td>Brand</td>
+			<td>price</td>
+			<td>amounts</td>
+		</tr>
+		<tr th:each="product:${products}">
+			<td th:text="${product.name}"></td>
+			<td th:text="${product.category}"></td>
+			<td th:text="${product.brandName}"></td>
+			<td th:text="${product.price}"></td>
+			<td th:text="${product.NumberOfProducts}"></td>
+		</tr>
+	</table>
+</section>
+
+<section id="hiding">
+
+<table class="listProduct">
+		<tr>
+			<td>total users</td>
+			<td>avg users</td>
+			
+		</tr>
+	
+	<tr th:each="user:${userData}">
+			
+			
+			
+			<td th:text="${user.id}"></td>
+			
+			<td th:text="${user.id/2}"></td>
+			
+		</tr>
+		
+		
+		
+			<tr>
+			<td>Products numbers</td>
+			<td>Products average</td>
+		</tr>
+		<tr th:each="product:${productData}">
+			<td th:text="${product.id}"></td>
+			<td th:text="${product.id/2}"></td>
+			
+		</tr>
+	
+	</table>
+
+</section>
+
+<button class="hide" onclick="return hide();">hide statistics</button>
+<button  class="show" onclick="return show();">show statistics</button>
+<script>
+	function show() 
+	{ 
+       
+            document.getElementById('hiding').style.display='block'; 
+            return true;
+       
+    } 
+    function hide()
+    { 
+    	document.getElementById('hiding').style.display='none'; 
+    	return true;
+    }   
+		
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-type" content="text/html;charest=UTF-8" />
+<link th:href="@{/style.css}" rel="stylesheet" />
+<title>Product Details</title>
+</head>
+<body th:each="product:${product}" >
+
+<div class="wrap">
+<span class="decor"></span>
+<nav>
+  <ul class="primary">
+  	<li>
+      <a href="/productHistory" >product History</a>
+    </li>
+    <li>
+      <a href="/addCollaborator" >Add collaborator</a>
+    </li>
+    <li>
+      <a href="/StoreOwnerProduct" >My Account</a>
+    </li>
+    <li>
+      <a href="/ShowAllProducts2">available Products</a>
+    </li>
+    <li>
+      <a href="Login">Logout</a> 
+    </li>
+      </ul>
+</nav>
+</div>
+
+	<table class="listProduct">
+		<tr>
+			
+			<td>ID</td>
+			<td>Product</td>
+			<td>category</td>
+			<td>Brand</td>
+			<td>price</td>
+			<td>amounts</td>
+			<td>views</td>
+			
+			
+		</tr>
+		<tr >
+			<td th:text="${product.id}"></td>
+			<td th:text="${product.name}"></td>
+			<td th:text="${product.category}"></td>
+			<td th:text="${product.brandName}"></td>
+			<td th:text="${product.price}"></td>
+			<td th:text="${product.NumberOfProducts}"></td>
+			<td th:text="${product.counter}"></td>
+		</tr>
+	</table>
+	
+<!-- 	<div class="productDetails"> -->
+	
+<!-- 		<h1>product name : ${product.id}</h1> -->
+<!-- 	</div> -->
+	
+	<form class="adminform" method="post" th:action="@{/productDetailsStoreOwner/get/__${product.id}__}" th:object="${Store}">
+		<h3 class="header">get Product</h3>
+		<input class="inputData" placeholder="quantity" type="text" th:field="*{quantity}" ></input>
+		<br></br>
+		<input class="submit" type="submit" name="submit" placeholder="" value="submit"></input>
+	</form>
+
+</body>
+</html>
+
+

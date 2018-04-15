@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-type" content="text/html;charest=UTF-8" />
+<link th:href="@{/style.css}" rel="stylesheet" />
+<title>Product Details</title>
+</head>
+<body th:each="product:${product}" >
+
+
+	<table class="listProduct">
+		<tr>
+			
+			<td>ID</td>
+			<td>Product</td>
+			<td>category</td>
+			<td>Brand</td>
+			<td>price</td>
+<!-- 			<td>views</td> -->
+			<td>amounts</td>
+			
+			
+		</tr>
+<!-- 		<tr th:each="product:${products}"> -->
+		<tr >
+			<td th:text="${product.id}"></td>
+			<td th:text="${product.name}"></td>
+			<td th:text="${product.category}"></td>
+			<td th:text="${product.brandName}"></td>
+			<td th:text="${product.price}"></td>
+<!-- 			<td th:text="${product.counter}"></td> -->
+			<td th:text="${product.NumberOfProducts}"></td>
+		</tr>
+	</table>
+	
+<!-- 	<div class="productDetails"> -->
+	
+<!-- 		<h1>product name : ${product.id}</h1> -->
+<!-- 	</div> -->
+	
+	<form class="adminform" method="post" th:action="@{/productdetails/get/__${product.id}__}" th:object="${Buyer}">
+		<h3 class="header">buy Product</h3>
+		<input class="inputData" placeholder="amounts" type="text" th:field="*{amounts}" ></input>
+		<br></br>
+		<input class="inputData" placeholder="address" type="text" th:field="*{address}"></input>
+		<br></br>
+		<input class="submit" type="submit" name="submit" placeholder="" value="submit"></input>
+	</form>
+
+</body>
+</html>
+
+
